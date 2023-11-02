@@ -1,0 +1,103 @@
+html {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    scrollbar-color: grey transparent;
+    font-size: 62.5%
+}
+
+::-webkit-scrollbar {
+    width: 1.6rem;
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+    background-color: grey;
+    border: 0.2rem solid transparent;
+    border-radius: var(--var-border-radius, 0.5rem);
+}
+  
+::-webkit-scrollbar-corner {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scrollbar-gutter: stable;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-family: Typewriter, serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #4f5957;
+    background-color: rgb(65, 65, 65);
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Don't change this instance of --color-text or any of its values in other themes to not be hex; it's parsed as hex
+    elsewhere to provide theme-dependent color gradients */
+    --color-text: #e0e0e0;
+    --color-text-inverted: black;
+    --color-base: #455a64;
+    --color-disabled: #37474f;
+    --color-accent: #1256a3;
+    --color-good: #5ac467;
+    --color-good-dark: #127a20;
+    --color-good-paused: #e3e638;
+    --color-bad: #b84b5f;
+}
+
+@font-face {
+    font-family: Typewriter;
+    src: url("MonospaceTypewriter.ttf");
+}
+
+button:focus {
+    outline: none;
+}
+
+.o-grid-wrapper {
+    width: 500px;
+    height: 500px;
+    border: solid blue 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.o-pixel {
+    width: 25px;
+    height: 25px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.o-pixel__empty {
+    background-color: white;
+}
+
+.o-pixel__filled {
+    background-color: black;
+}
+
+.o-text {
+    font-size: 1.1rem;
+}
+
+.o-text__large {
+    font-size: 3.5rem;
+}

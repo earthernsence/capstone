@@ -1,2 +1,10 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+*.js     eol=crlf
+*.css    eol=crlf
+*.html   eol=crlf
+*.ts     eol=crlf
+*.md     eol=crlf
+*.txt    eol=crlf
+*.json   eol=crlf
