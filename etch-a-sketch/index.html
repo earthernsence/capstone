@@ -5,13 +5,15 @@
         <meta name="etch a sketch" content="etch a sketch">
         <link href="styles.css" rel="stylesheet" type="text/css" />
     </head>
-    <body>
+    <body onload="draw()">
         <div class="o-text o-text__large">
             etch sketchs
         </div>
         <div class="o-grid-wrapper" id="wrapper">
 
         </div>
+        <input class="o-dimension-slider" id="slider" type="range" min="1" max="50" value="25" />
+        <input class="o-large-checkbox" id="checkbox" type="checkbox" />
         <script src="script.js"></script>
     </body>
 </html>
