@@ -1,5 +1,6 @@
 const wrapper = document.getElementById("wrapper");
 const slider = document.getElementById("slider");
+
 const gridEntry = () => {
     const cell = document.createElement("div");
     cell.className = "o-pixel";
@@ -31,6 +32,7 @@ function getNeededNumberOfSquares() {
 function draw() {
     document.getElementById("dimensions-label").innerHTML = `Currently ${slider.value} x ${slider.value}`;
     
+    // This effectively wipes the HTML inside the wrapper clean, so we can redraw the grid.
     wrapper.innerHTML = "";
 
     for (let i = 1; i <= getNeededNumberOfSquares(); i++) {
@@ -66,7 +68,14 @@ function increment(up) {
 
 function hover(cell) {
     cell.className = "o-pixel";
-    useEraser ? cell.classList.add("o-pixel__empty") : cell.classList.add("o-pixel__filled");
+    if (useEraser) {
+        cell.classList.add("o-pixel__empty");
+        cell.style["background-color"] = "white";
+        cell.style["opacity"] = 1;
+        cell.dataset["shading"] = 0;
+        return;
+    }
+    cell.classList.add("o-pixel__filled");
     cell.style["background-color"] = penColour;
     const shadingAsInteger = parseFloat(cell.dataset["shading"]);
     cell.dataset["shading"] = Math.min(useShading ? shadingAsInteger + 0.1 : 1, 1);
