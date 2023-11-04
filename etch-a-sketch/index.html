@@ -3,17 +3,42 @@
         <title>etch a stecktch</title>
         <meta charset="utf-8" />
         <meta name="etch a sketch" content="etch a sketch">
+        <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
         <link href="styles.css" rel="stylesheet" type="text/css" />
     </head>
     <body onload="draw()">
-        <div class="o-text o-text__large">
-            etch sketchs
-        </div>
+        <div class="c-main-welcome">
+            <div class="o-text o-text__large c-main-title">
+                Etch-a-Sketch
+            </div>
+            <div class="o-text o-text__medium c-main-subtitle">
+                by Jace Royer
+            </div>
+        </div>  
         <div class="o-grid-wrapper" id="wrapper">
 
         </div>
-        <input class="o-dimension-slider" id="slider" type="range" min="1" max="50" value="25" />
-        <input class="o-large-checkbox" id="checkbox" type="checkbox" />
+        <div class="c-options-box">
+            <div class="c-options-box__dimensions">
+                <label for="dimensions" class="o-text__medium">Grid Dimensions</label>
+                <br>
+                <div class="l-dimension-slider">
+                    <div class="c-ad-slider__button" onclick="increment(false)">
+                        <div class="fas fa-minus"></div>
+                    </div>
+                    <input class="o-dimension-slider" id="slider" name="dimensions" type="range" min="1" max="50" value="25" />
+                    <div class="c-ad-slider__button" onclick="increment(true)">
+                        <div class="fas fa-plus"></div>
+                    </div>
+                </div>
+                <br>
+                <div class="o-text" id="dimensions-label">Currently a x b</div>
+            </div>
+            <br>
+            <button class="o-primary-btn" id="eraser-toggle" onclick="toggleEraser()">Eraser: OFF</button>
+            <br>
+            <button class="o-primary-btn" onclick="draw()">Clear grid</button>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>
