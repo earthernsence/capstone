@@ -1,10 +1,10 @@
 const wrapper = document.getElementById("wrapper");
 const slider = document.getElementById("slider");
-const eraser = document.getElementById("checkbox");
 const gridEntry = () => {
     const cell = document.createElement("div");
     cell.className = "o-pixel";
     cell.classList.add("o-pixel__empty");
+    cell.setAttribute("data-shading", 0);
     cell.addEventListener("mouseover", () => hover(cell));
     cell.style.width = `${getDimensionsFromBrowser()}px`;
     cell.style.height = `${getDimensionsFromBrowser()}px`;
@@ -13,6 +13,7 @@ const gridEntry = () => {
 
 let grid = [];
 const GRID_DIMENSION = 500;
+let penColour = "black";
 
 function getDimensionsFromBrowser() {
     // use slider for squares on one size
@@ -41,6 +42,7 @@ function draw() {
 }
 
 let useEraser = false;
+let useShading = false;
 
 slider.onchange = () => {
     grid = [];
@@ -52,6 +54,11 @@ function toggleEraser() {
     document.getElementById("eraser-toggle").innerHTML = `Eraser: ${useEraser ? "ON" : "OFF"}`
 }
 
+function toggleShading() {
+    useShading = !useShading;
+    document.getElementById("shading-toggle").innerHTML = `Shading: ${useShading ? "ON" : "OFF"}`
+}
+
 function increment(up) {
     up ? slider.value++ : slider.value--;
     slider.onchange();
@@ -60,4 +67,24 @@ function increment(up) {
 function hover(cell) {
     cell.className = "o-pixel";
     useEraser ? cell.classList.add("o-pixel__empty") : cell.classList.add("o-pixel__filled");
+    cell.style["background-color"] = penColour;
+    const shadingAsInteger = parseFloat(cell.dataset["shading"]);
+    cell.dataset["shading"] = Math.min(useShading ? shadingAsInteger + 0.1 : 1, 1);
+    cell.style["opacity"] = cell.dataset["shading"];
+}
+
+function changeColour(colour) {
+    penColour = colour;
+}
+
+const COLOURS = ["black", "green", "red", "lightblue", "gray", "#37a4ba"];
+const colourSelector = document.getElementById("colour-selectors");
+
+for (const colour of COLOURS) {
+    const cell = document.createElement("div");
+    cell.classList.add("o-pixel", "o-pixel--selectable");
+    cell.setAttribute("data-colour", colour)
+    cell.style["background-color"] = colour;
+    cell.addEventListener("click", () => changeColour(cell.dataset.colour))
+    colourSelector.append(cell)
 }

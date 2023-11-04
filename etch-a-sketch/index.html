@@ -5,6 +5,7 @@
         <meta name="etch a sketch" content="etch a sketch">
         <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
         <link href="styles.css" rel="stylesheet" type="text/css" />
+        <link href="tooltips.css" rel="stylesheet" type="text/css" />
     </head>
     <body onload="draw()">
         <div class="c-main-welcome">
@@ -14,9 +15,16 @@
             <div class="o-text o-text__medium c-main-subtitle">
                 by Jace Royer
             </div>
-        </div>  
-        <div class="o-grid-wrapper" id="wrapper">
-
+        </div>
+        <div class="o-grid-section">
+            <div class="o-grid-wrapper" id="wrapper">
+                <!-- This will be filled dynamically in our JS -->
+            </div>
+            <br>
+            <div class="o-text__medium">Select a colour...</div>
+            <div class="l-colour-selectors" id="colour-selectors">
+                <!-- This will be filled dynamically in our JS -->
+            </div>
         </div>
         <div class="c-options-box">
             <div class="c-options-box__dimensions">
@@ -36,6 +44,12 @@
             </div>
             <br>
             <button class="o-primary-btn" id="eraser-toggle" onclick="toggleEraser()">Eraser: OFF</button>
+            <br>
+            <span ach-tooltip="Instead of immediately filling the pixel with the colour, this button will enable shading, which will fill with a less opaque version of the colour in order to emulate shading.">
+                <button class="o-primary-btn" id="shading-toggle" onclick="toggleShading()">
+                    Shading: OFF
+                </button>
+            </span>
             <br>
             <button class="o-primary-btn" onclick="draw()">Clear grid</button>
         </div>
