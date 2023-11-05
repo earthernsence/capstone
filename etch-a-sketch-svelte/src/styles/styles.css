@@ -64,7 +64,7 @@ body {
 
 @font-face {
     font-family: Typewriter;
-    src: url("MonospaceTypewriter.ttf");
+    src: url("/fonts/MonospaceTypewriter.ttf");
 }
 
 button:focus {
@@ -82,6 +82,7 @@ button:focus {
 }
 
 .o-pixel {
+    background-color: white;
     margin: 0;
     padding: 0;
 }
@@ -157,11 +158,13 @@ button:focus {
 
 .c-ad-slider__button {
     display: flex;
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 1.75rem;
+    height: 1.75rem;
     justify-content: center;
     align-items: center;
     font-size: 1rem;
+    color: var(--color-text);
+    background-color: var(--color-text-inverted);
     border: 0.1rem solid var(--color-good);
     border-radius: var(--var-border-radius, 50%);
     transition-duration: 0.2s;

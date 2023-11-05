@@ -82,18 +82,27 @@ function hover(cell) {
     cell.style["opacity"] = cell.dataset["shading"];
 }
 
-function changeColour(colour) {
+function changeColour(colour, cell) {
+    if (penColour === colour) return;
     penColour = colour;
+    cell.classList.add("l-colour-selector__selected");
+    if (currentSelectedCell) currentSelectedCell.classList.remove("l-colour-selector__selected");
+    currentSelectedCell = cell;
 }
 
 const COLOURS = ["black", "green", "red", "lightblue", "gray", "#37a4ba"];
 const colourSelector = document.getElementById("colour-selectors");
+let currentSelectedCell;
 
 for (const colour of COLOURS) {
     const cell = document.createElement("div");
     cell.classList.add("o-pixel", "o-pixel--selectable");
-    cell.setAttribute("data-colour", colour)
+    cell.setAttribute("data-colour", colour);
     cell.style["background-color"] = colour;
-    cell.addEventListener("click", () => changeColour(cell.dataset.colour))
-    colourSelector.append(cell)
+    cell.addEventListener("click", () => changeColour(cell.dataset.colour, cell));
+    colourSelector.append(cell);
+    if (colour === "black") {
+        cell.classList.add("l-colour-selector__selected");
+        currentSelectedCell = cell;
+    }
 }
